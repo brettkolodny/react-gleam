@@ -1,6 +1,6 @@
 # react_gleam
 
-React bindings for Gleam
+React bindings for Gleam inspired by [Lustre](https://github.com/hayleigh-dot-dev/gleam-lustre/blob/main/src/lustre/attribute.gleam) and [ReasonReact](https://reasonml.github.io/reason-react/).
 
 ---
 
