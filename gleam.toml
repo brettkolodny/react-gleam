@@ -1,0 +1,13 @@
+name = "react_gleam"
+version = "0.1.0"
+
+target = "javascript"
+
+licences = ["MIT"]
+description = "React bindings for Gleam"
+
+[dependencies]
+gleam_stdlib = "~> 0.25"
+
+[dev-dependencies]
+gleeunit = "~> 0.7"
