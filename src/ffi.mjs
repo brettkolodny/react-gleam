@@ -2,12 +2,34 @@
 // https://github.com/hayleigh-dot-dev/gleam-lustre
 // Thank you Hayleigh 💙
 
-import { createElement, useState, useEffect, useReducer } from "react";
+import {
+  createElement,
+  useState,
+  useEffect,
+  useReducer,
+  createContext,
+  useContext,
+  useMemo,
+  useCallback,
+  useId,
+  useTransition,
+  useDebugValue,
+} from "react";
 import { createRoot } from "react-dom/client";
+import * as Gleam from "./gleam.mjs";
 
 // HOOKS ----------------------------------------------------------------------
 
-export { useState, useEffect, useReducer };
+export {
+  useState,
+  useEffect,
+  useReducer,
+  useMemo,
+  useCallback,
+  useId,
+  useTransition,
+  useDebugValue,
+};
 
 export const useEffectHook = (cb, props) => {
   const cbWrapper = () => {
@@ -67,6 +89,32 @@ export const text = (content) => content;
 export const component = (element) => {
   return createElement(element);
 };
+
+// CONTEXT --------------------------------------------------------------------
+
+/**
+ * Gleam does not allow us to export a non-const value from a module so to work
+ * around this we create a global variable to store all of the app's contexts
+ * and supply functions to interact with them.
+ */
+const contextsMap = new Map();
+
+export const setContext = (key, value) => {
+  const context = createContext(value);
+  contextsMap.set(key, context);
+};
+
+export const getContext = (key) => {
+  const context = contextsMap.get(key);
+
+  if (context) {
+    return new Gleam.Some(context);
+  }
+
+  return new Gleam.None();
+};
+
+export { useContext };
 
 // UTILITY --------------------------------------------------------------------
 
