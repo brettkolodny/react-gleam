@@ -4,10 +4,10 @@
 packages = [
   { name = "gleam_stdlib", version = "0.25.0", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "AD0F89928E0B919C8F8EDF640484633B28DBF88630A9E6AE504617A3E3E5B9A2" },
   { name = "gleeunit", version = "0.7.2", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "5F4FBED3E93CDEDB0570D30E9DECB7058C2D327996B78BB2D245C739C7136010" },
-  { name = "react_gleam", version = "0.1.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "react_gleam", source = "hex", outer_checksum = "F7855982D697658D9D07DF7664D21BFCA59D71B572501776AFEF37B9F2765779" },
+  { name = "react_gleam", version = "0.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "react_gleam", source = "hex", outer_checksum = "A62315936780523F1447E2B2E73370317FE97982BB705B588410F0C1A8560596" },
 ]
 
 [requirements]
 gleam_stdlib = "~> 0.25"
 gleeunit = "~> 0.7"
-react_gleam = "~> 0.1"
+react_gleam = "~> 0.3"
