@@ -147,3 +147,7 @@ const toProps = (attributes) => {
     })
   );
 };
+
+// ----------------------------------------------------------------------------
+
+export const object = (entries) => Object.fromEntries(entries);

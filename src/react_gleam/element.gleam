@@ -19,18 +19,6 @@ pub external fn node(
 ) -> Element =
   "../ffi.mjs" "node"
 
-pub external fn stateful(
-  init: state,
-  render: fn(state, fn(state) -> Nil) -> Element,
-) -> Element =
-  "../ffi.mjs" "stateful"
-
-/// A fragment doesn't appear in the DOM, but allows us to treat a list of elements
-/// as if it were a single one. 
-///
-pub external fn fragment(children: List(Element)) -> Element =
-  "../ffi.mjs" "fragment"
-
 /// Render a Gleam string as an HTML text node.
 ///
 pub external fn text(content: String) -> Element =
