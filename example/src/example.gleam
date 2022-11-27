@@ -1,39 +1,21 @@
-import gleam/int
 import react_gleam.{render}
-import react_gleam/element.{Element, component, div, text}
-import react_gleam/hooks.{use_state}
-import react_gleam/event.{on_click}
+import react_gleam/element.{div, text}
+import greeter.{greet}
+import counter.{counter}
 
 pub fn main() {
   render(app(), "#app")
 }
 
-fn app() -> Element {
+fn app() {
   div(
     [],
     [
       div([], [text("Welcome to Gleam React!")]),
-      greet(name: "Joe"),
+      div([], [text("A greeter with use_effect")]),
+      greet(world: "world"),
+      div([], [text("A counter with use_state")]),
       counter(count: 6),
-    ],
-  )
-}
-
-fn greet(name name: String) -> Element {
-  div([], [text("Hello " <> name <> "!")])
-}
-
-fn counter(count init_count: Int) -> Element {
-  use <- component()
-
-  let #(count, set_count) = use_state(init_count)
-
-  div(
-    [],
-    [
-      div([on_click(fn(_) { set_count(count + 1) })], [text("+")]),
-      div([], [text(int.to_string(count))]),
-      div([on_click(fn(_) { set_count(count - 1) })], [text("-")]),
     ],
   )
 }
