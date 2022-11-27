@@ -1,13 +1,3 @@
-# react_gleam
-
-React bindings for Gleam inspired by [Lustre](https://github.com/hayleigh-dot-dev/gleam-lustre/blob/main/src/lustre/attribute.gleam) and [ReasonReact](https://reasonml.github.io/reason-react/).
-
----
-
-[![Package Version](https://img.shields.io/hexpm/v/react_gleam)](https://hex.pm/packages/react_gleam)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/react_gleam/)
-
-```gleam
 import gleam/int
 import react_gleam.{render}
 import react_gleam/element.{Element, component, div, text}
@@ -47,15 +37,3 @@ fn counter(count init_count: Int) -> Element {
     ],
   )
 }
-
-```
-
-## Installation
-
-If available on Hex this package can be added to your Gleam project:
-
-```sh
-gleam add react_gleam
-
-yarn add react react-dom
-```
