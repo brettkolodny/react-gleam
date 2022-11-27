@@ -1,5 +1,5 @@
 import react_gleam.{render}
-import react_gleam/element.{div, text}
+import react_gleam/element.{div, h1, h2, text}
 import greeter.{greet}
 import counter.{counter}
 
@@ -11,10 +11,10 @@ fn app() {
   div(
     [],
     [
-      div([], [text("Welcome to Gleam React!")]),
-      div([], [text("A greeter with use_effect")]),
+      h1([], [text("Welcome to Gleam React!")]),
+      h2([], [text("A greeter with use_effect")]),
       greet(world: "world"),
-      div([], [text("A counter with use_state")]),
+      h2([], [text("A counter with use_state")]),
       counter(count: 6),
     ],
   )
