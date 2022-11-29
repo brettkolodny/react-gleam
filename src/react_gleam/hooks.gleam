@@ -1,10 +1,15 @@
 // IMPORTS --------------------------------------------------------------------
 
 import gleam/option.{Option}
+import react_gleam/dom_element.{DomElement}
 
 // TYPES ----------------------------------------------------------------------
 
 pub external type Context
+
+pub type Ref(g) {
+  Ref(current: Option(g))
+}
 
 // STATE ----------------------------------------------------------------------
 
@@ -129,3 +134,8 @@ pub external fn use_transition(cb: fn() -> Nil) -> #(Bool, fn() -> Nil) =
 
 pub external fn use_debug_value(value: String) -> Nil =
   "../ffi.mjs" "useDebugValue"
+
+// REF --
+
+pub external fn use_ref(value: Option(DomElement)) -> Ref(DomElement) =
+  "../ffi.mjs" "useRefHook"
