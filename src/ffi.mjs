@@ -14,9 +14,10 @@ import {
   useId,
   useTransition,
   useDebugValue,
+  useRef,
 } from "react";
 import { createRoot } from "react-dom/client";
-import * as Gleam from "./gleam.mjs";
+import * as Option from "../gleam_stdlib/gleam/option.mjs";
 
 // HOOKS ----------------------------------------------------------------------
 
@@ -51,6 +52,31 @@ export const useEffect0 = (cb) => {
     }
   };
   useEffect(cbWrapper, []);
+};
+
+export const useRefHook = (v) => {
+  let ref = {
+    value: v,
+    get current() {
+      if (
+        this.value.constructor.name !== "Some" &&
+        !this.value.constructor.name !== "None"
+      ) {
+        if (this.value === null || this.value === undefined) {
+          return new Option.None();
+        } else {
+          return new Option.Some(this.value);
+        }
+      }
+
+      return this.value;
+    },
+    set current(v) {
+      this.value = v;
+    },
+  };
+
+  return ref;
 };
 
 // ELEMENTS -------------------------------------------------------------------
@@ -108,10 +134,10 @@ export const getContext = (key) => {
   const context = contextsMap.get(key);
 
   if (context) {
-    return new Gleam.Some(context);
+    return new Option.Some(context);
   }
 
-  return new Gleam.None();
+  return new Option.None();
 };
 
 export { useContext };
@@ -130,6 +156,8 @@ export const render = (app, selector) => {
   reactRoot.render(app);
 };
 
+// ATTRIBUTE ------------------------------------------------------------------
+
 // HELPERS --------------------------------------------------------------------
 
 const toProps = (attributes) => {
@@ -137,7 +165,9 @@ const toProps = (attributes) => {
 
   return Object.fromEntries(
     attributes.toArray().map((attr) => {
-      if ("name" in attr && "value" in attr) {
+      if ("name" in attr && "ref" in attr) {
+        return [attr.name, attr.ref];
+      } else if ("name" in attr && "value" in attr) {
         return [attr.name, attr.value];
       } else if ("name" in attr && "handler" in attr) {
         return ["on" + capitalize(attr.name), (e) => attr.handler(e)];
@@ -151,3 +181,30 @@ const toProps = (attributes) => {
 // ----------------------------------------------------------------------------
 
 export const object = (entries) => Object.fromEntries(entries);
+
+// DOM ELEMENTS ---------------------------------------------------------------
+
+/**
+ * Set the attribute of an HTMLElement
+ * @param {HTMLElement} element
+ * @param {string} name
+ * @param {string} value
+ */
+export const setAttribute = (element, name, value) =>
+  element.setAttribute(name, value);
+
+/**
+ * Retrieve the attribute of an HTMLElement
+ * @param {HTMLElement} element
+ * @param {string} name
+ * @returns {Option<string>}
+ */
+export const getAttribute = (element, name) => {
+  const value = element[name];
+
+  if (value === undefined || value === null) {
+    return new Option.None();
+  }
+
+  return new Option.Some(value);
+};

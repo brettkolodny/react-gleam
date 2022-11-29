@@ -13,7 +13,7 @@ import react_gleam/attribute.{Attribute}
 pub fn on(
   name: String,
   handler: fn(Dynamic, fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   attribute.event(name, handler)
 }
 
@@ -25,41 +25,49 @@ pub fn dispatch(action: action) -> fn(fn(action) -> Nil) -> Nil {
 // MOUSE EVENTS ----------------------------------------------------------------
 
 ///
-pub fn on_click(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_click(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
   on("click", fn(_, dispatch) { handler(dispatch) })
 }
 
 ///
-pub fn on_mouse_down(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_mouse_down(
+  handler: fn(fn(action) -> Nil) -> Nil,
+) -> Attribute(g, action) {
   on("mouseDown", fn(_, dispatch) { handler(dispatch) })
 }
 
 ///
-pub fn on_mouse_up(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_mouse_up(
+  handler: fn(fn(action) -> Nil) -> Nil,
+) -> Attribute(g, action) {
   on("mouseUp", fn(_, dispatch) { handler(dispatch) })
 }
 
 ///
 pub fn on_mouse_enter(
   handler: fn(fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on("mouseEnter", fn(_, dispatch) { handler(dispatch) })
 }
 
 ///
 pub fn on_mouse_leave(
   handler: fn(fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on("mouseLeave", fn(_, dispatch) { handler(dispatch) })
 }
 
 ///
-pub fn on_mouse_over(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_mouse_over(
+  handler: fn(fn(action) -> Nil) -> Nil,
+) -> Attribute(g, action) {
   on("mouseOver", fn(_, dispatch) { handler(dispatch) })
 }
 
 ///
-pub fn on_mouse_out(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_mouse_out(
+  handler: fn(fn(action) -> Nil) -> Nil,
+) -> Attribute(g, action) {
   on("mouseOut", fn(_, dispatch) { handler(dispatch) })
 }
 
@@ -67,7 +75,7 @@ pub fn on_mouse_out(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) 
 
 pub fn on_keypress(
   handler: fn(String, fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on(
     "keyPress",
     fn(e, dispatch) {
@@ -82,7 +90,7 @@ pub fn on_keypress(
 
 pub fn on_keydown(
   handler: fn(String, fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on(
     "keyDown",
     fn(e, dispatch) {
@@ -97,7 +105,7 @@ pub fn on_keydown(
 
 pub fn on_keyup(
   handler: fn(String, fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on(
     "keyUp",
     fn(e, dispatch) {
@@ -115,7 +123,7 @@ pub fn on_keyup(
 ///
 pub fn on_input(
   handler: fn(String, fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on(
     "input",
     fn(e, dispatch) {
@@ -130,7 +138,7 @@ pub fn on_input(
 
 pub fn on_check(
   handler: fn(Bool, fn(action) -> Nil) -> Nil,
-) -> Attribute(action) {
+) -> Attribute(g, action) {
   on(
     "check",
     fn(e, dispatch) {
@@ -143,16 +151,16 @@ pub fn on_check(
   )
 }
 
-pub fn on_submit(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_submit(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
   on("submit", fn(_, dispatch) { handler(dispatch) })
 }
 
 // FOCUS EVENTS ----------------------------------------------------------------
 
-pub fn on_focus(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_focus(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
   on("focus", fn(_, dispatch) { handler(dispatch) })
 }
 
-pub fn on_blur(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(action) {
+pub fn on_blur(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
   on("blur", fn(_, dispatch) { handler(dispatch) })
 }
