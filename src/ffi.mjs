@@ -18,6 +18,7 @@ import {
 } from "react";
 import { createRoot } from "react-dom/client";
 import * as Option from "../gleam_stdlib/gleam/option.mjs";
+import * as Gleam from "./gleam.mjs";
 
 // HOOKS ----------------------------------------------------------------------
 
@@ -79,6 +80,23 @@ export const useRefHook = (v) => {
   return ref;
 };
 
+/**
+ * Retrieves the stored context provider
+ * @param {string} key Key that the context is stored under
+ * @returns {Gleam.Result<T>} Ok(T) if the context exists, Error if it doesn't
+ */
+export const useContextHook = (key) => {
+  const contextProvider = contextsMap.get(key);
+
+  if (!contextProvider) {
+    return new Gleam.Error();
+  }
+
+  const context = useContext(contextProvider);
+
+  return new Gleam.Ok(context);
+};
+
 // ELEMENTS -------------------------------------------------------------------
 
 /**
@@ -125,11 +143,21 @@ export const component = (element) => {
  */
 const contextsMap = new Map();
 
+/**
+ * Set a context to be retrieved elsewhere in your application
+ * @param {string} key
+ * @param {any} value The context's value
+ */
 export const setContext = (key, value) => {
   const context = createContext(value);
   contextsMap.set(key, context);
 };
 
+/**
+ * Retrieve a stored context
+ * @param {string} key The key the context is stored under
+ * @returns {Option.Some<any> | Option.None}
+ */
 export const getContext = (key) => {
   const context = contextsMap.get(key);
 
