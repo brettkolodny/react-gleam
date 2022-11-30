@@ -14,10 +14,10 @@ import {
   useId,
   useTransition,
   useDebugValue,
-  useRef,
 } from "react";
 import { createRoot } from "react-dom/client";
 import * as Option from "../gleam_stdlib/gleam/option.mjs";
+import * as GleamJS from "../gleam_javascript/gleam.mjs";
 import * as Gleam from "./gleam.mjs";
 
 // HOOKS ----------------------------------------------------------------------
@@ -236,3 +236,35 @@ export const getAttribute = (element, name) => {
 
   return new Option.Some(value);
 };
+
+// LOCATION -------------------------------------------------------------------
+
+export const pushState = (url) => {
+  window.history.pushState("", "", url);
+  window.dispatchEvent(new Event("locationchange"));
+};
+
+export const popState = () => {
+  window.history.back();
+};
+
+export const currentLocation = () => {
+  const url = new URL(window.location.href);
+
+  return {
+    path: GleamJS.toList(
+      url.pathname.split("/").filter((entry) => entry !== "")
+    ),
+    hash: url.hash,
+    search: url.search,
+  };
+};
+
+
+// EVENTS ---------------------------------------------------------------------
+
+export const addEventListener = (eventName, callback) => {
+  window.addEventListener(eventName, callback);
+};
+
+export const newEvent = (type) => new Event(type);

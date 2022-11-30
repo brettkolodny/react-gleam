@@ -8,6 +8,7 @@ description = "React bindings for Gleam"
 
 [dependencies]
 gleam_stdlib = "~> 0.25"
+gleam_javascript = "~> 0.2"
 
 [dev-dependencies]
 gleeunit = "~> 0.7"
