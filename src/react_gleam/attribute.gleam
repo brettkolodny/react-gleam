@@ -9,7 +9,7 @@ import gleam/int
 import gleam/list
 import gleam/pair
 import gleam/string
-import react_gleam/hooks.{Ref}
+import react_gleam/hook.{Ref}
 
 // TYPES -----------------------------------------------------------------------
 
