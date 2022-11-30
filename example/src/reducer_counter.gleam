@@ -1,6 +1,7 @@
 import gleam/int
-import react_gleam/element.{component, div, text}
-import react_gleam/hooks.{use_reducer}
+import react_gleam.{component}
+import react_gleam/element.{div, text}
+import react_gleam/hook.{use_reducer}
 import react_gleam/event.{on_click}
 
 type Action {

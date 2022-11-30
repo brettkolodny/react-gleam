@@ -2,8 +2,9 @@ import gleam/option.{Some}
 import gleam/list
 import gleam/int
 import gleam/float
-import react_gleam/element.{component, div, text}
-import react_gleam/hooks.{use_effect0, use_state}
+import react_gleam.{component}
+import react_gleam/element.{div, text}
+import react_gleam/hook.{use_effect0, use_state}
 
 const world = [
   "world", "wêreld", "botë", "ዓለም", "العالمية", "աշխարհ",

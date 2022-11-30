@@ -1,7 +1,8 @@
 import gleam/int
-import react_gleam/element.{component, div, text}
+import react_gleam.{component}
+import react_gleam/element.{div, text}
 import react_gleam/event.{on_click}
-import react_gleam/hooks.{use_state}
+import react_gleam/hook.{use_state}
 
 pub fn counter(count init_count: Int) {
   use <- component()
