@@ -1,7 +1,7 @@
 // IMPORTS --------------------------------------------------------------------
 
 import gleam/option.{Some}
-import react_gleam/hooks.{use_effect0, use_state}
+import react_gleam/hook.{use_effect0, use_state}
 
 // TYPES ----------------------------------------------------------------------
 

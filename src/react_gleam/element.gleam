@@ -901,19 +901,3 @@ pub fn template(
 ) -> Element {
   node("template", attributes, children)
 }
-
-// COMPONENT ------------------------------------------------------------------
-
-/// This needs to be called at the top of a custom component 
-/// to allow for hooks to work
-/// ```gleam
-/// pub fn counter() {
-///   use <- component()
-///
-///   let #(count, set_count) = use_state(0)
-///
-///   div([], int.to_string(count))
-/// }
-/// ```
-pub external fn component(element: fn() -> Element) -> Element =
-  "../ffi.mjs" "component"
