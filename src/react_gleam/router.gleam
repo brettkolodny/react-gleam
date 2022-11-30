@@ -1,0 +1,67 @@
+// IMPORTS --------------------------------------------------------------------
+
+import gleam/option.{Some}
+import react_gleam/hooks.{use_effect0, use_state}
+
+// TYPES ----------------------------------------------------------------------
+
+pub type Location {
+  Location(path: List(String), hash: String, search: String)
+}
+
+external type DOMEvent
+
+// HOOKS ----------------------------------------------------------------------
+
+pub fn use_url() -> Location {
+  let location = get_current_location()
+
+  let #(current_location, set_current_location) = use_state(location)
+
+  use_effect0(fn() {
+    let location_change_callback = fn() {
+      let new_location = get_current_location()
+
+      set_current_location(new_location)
+    }
+
+    let location_pop_callback = fn() {
+      dispatch_event(new_event("locationchange"))
+    }
+
+    add_event_listener("locationchange", location_change_callback)
+    add_event_listener("popstate", location_pop_callback)
+
+    Some(fn() {
+      remove_event_listener("locationchange", location_change_callback)
+      remove_event_listener("popstate", location_pop_callback)
+    })
+  })
+
+  current_location
+}
+
+// UTILITY --------------------------------------------------------------------
+
+pub external fn push(url: String) -> Nil =
+  "../ffi.mjs" "pushState"
+
+pub external fn back() -> Nil =
+  "../ffi.mjs" "popState"
+
+// ----------------------------------------------------------------------------
+
+external fn get_current_location() -> Location =
+  "../ffi.mjs" "currentLocation"
+
+external fn add_event_listener(name: String, callback: fn() -> Nil) -> Nil =
+  "" "window.addEventListener"
+
+external fn remove_event_listener(name: String, callback: fn() -> Nil) -> Nil =
+  "" "window.removeEventListener"
+
+external fn dispatch_event(event: DOMEvent) -> Nil =
+  "" "window.dispatchEvent"
+
+external fn new_event(name: String) -> DOMEvent =
+  "../ffi.mjs" "newEvent"
