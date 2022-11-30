@@ -55,13 +55,13 @@ external fn get_current_location() -> Location =
   "../ffi.mjs" "currentLocation"
 
 external fn add_event_listener(name: String, callback: fn() -> Nil) -> Nil =
-  "" "window.addEventListener"
+  "../ffi.mjs" "addEventListener"
 
 external fn remove_event_listener(name: String, callback: fn() -> Nil) -> Nil =
-  "" "window.removeEventListener"
+  "../ffi.mjs" "removeEventListener"
 
 external fn dispatch_event(event: DOMEvent) -> Nil =
-  "" "window.dispatchEvent"
+  "../ffi.mjs" "dispatchEvent"
 
 external fn new_event(name: String) -> DOMEvent =
   "../ffi.mjs" "newEvent"

@@ -260,11 +260,18 @@ export const currentLocation = () => {
   };
 };
 
-
 // EVENTS ---------------------------------------------------------------------
 
 export const addEventListener = (eventName, callback) => {
   window.addEventListener(eventName, callback);
+};
+
+export const removeEventListener = (eventName, callback) => {
+  window.removeEventListener(eventName, callback);
+};
+
+export const dispatchEvent = (event) => {
+  window.dispatchEvent(event);
 };
 
 export const newEvent = (type) => new Event(type);
