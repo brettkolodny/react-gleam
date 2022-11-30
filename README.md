@@ -9,9 +9,9 @@ React bindings for Gleam inspired by [Lustre](https://github.com/hayleigh-dot-de
 
 ```gleam
 import gleam/int
-import react_gleam.{render}
-import react_gleam/element.{Element, component, div, text}
-import react_gleam/hooks.{use_state}
+import react_gleam.{component, render}
+import react_gleam/element.{Element, div, text}
+import react_gleam/hook.{use_state}
 import react_gleam/event.{on_click}
 
 pub fn main() {
