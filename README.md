@@ -38,14 +38,14 @@ fn greet(name name: String) -> Element {
 fn counter(count init_count: Int) -> Element {
   use <- component()
 
-  let #(count, set_count) = use_state(init_count)
+  let #(count, set_count) = use_state(fn(_) { init_count })
 
   div(
     [],
     [
-      div([on_click(fn(_) { set_count(count + 1) })], [text("+")]),
+      div([on_click(fn(_) { set_count(fn(prev) { prev + 1 }) })], [text("+")]),
       div([], [text(int.to_string(count))]),
-      div([on_click(fn(_) { set_count(count - 1) })], [text("-")]),
+      div([on_click(fn(_) { set_count(fn (prev) { prev - 1 }) })], [text("-")]),
     ],
   )
 }
