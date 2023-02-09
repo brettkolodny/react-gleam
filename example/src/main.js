@@ -1,3 +1,3 @@
-import { main } from "";
+import { main } from "./example.mjs";
 
 main();

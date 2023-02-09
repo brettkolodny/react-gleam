@@ -2,13 +2,13 @@
 # You typically do not need to edit this file
 
 packages = [
-  { name = "gleam_javascript", version = "0.2.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_javascript", source = "hex", outer_checksum = "DCD7A75AD459A61976EEFAE083F9A88B44780A6B1C504DD99B365CF7CADE0896" },
-  { name = "gleam_stdlib", version = "0.25.0", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "AD0F89928E0B919C8F8EDF640484633B28DBF88630A9E6AE504617A3E3E5B9A2" },
-  { name = "gleeunit", version = "0.7.2", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "5F4FBED3E93CDEDB0570D30E9DECB7058C2D327996B78BB2D245C739C7136010" },
-  { name = "react_gleam", version = "0.4.0", build_tools = ["gleam"], requirements = ["gleam_javascript", "gleam_stdlib"], otp_app = "react_gleam", source = "hex", outer_checksum = "447612A04ED09E6B462362B99F1707DD0CAA4650BADF7E16CC627D6FF546A969" },
+  { name = "gleam_javascript", version = "0.4.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_javascript", source = "hex", outer_checksum = "E0E8D33461776BFCC124838183F85E430D3A71D7318F210C9DE0CFB52E5AC8DE" },
+  { name = "gleam_stdlib", version = "0.26.1", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "B17BBE8A78F3909D93BCC6C24F531673A7E328A61F24222EB1E58D0A7552B1FE" },
+  { name = "gleeunit", version = "0.10.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "ECEA2DE4BE6528D36AFE74F42A21CDF99966EC36D7F25DEB34D47DD0F7977BAF" },
+  { name = "react_gleam", version = "0.5.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "gleam_javascript"], otp_app = "react_gleam", source = "hex", outer_checksum = "1D287619A0DE9FA3150CDE9DA7AA33916FF5BB73C51383DCDC809F48F6C6B1A8" },
 ]
 
 [requirements]
-gleam_stdlib = "~> 0.25"
+gleam_stdlib = "~> 0.26"
 gleeunit = "~> 0.7"
-react_gleam = "~> 0.4"
+react_gleam = "~> 0.5"

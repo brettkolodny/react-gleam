@@ -12,8 +12,8 @@ target = "javascript"
 # links = [{ title = "Website", href = "https://gleam.run" }]
 
 [dependencies]
-gleam_stdlib = "~> 0.25"
-react_gleam = "~> 0.4"
+gleam_stdlib = "~> 0.26"
+react_gleam = "~> 0.5"
 
 [dev-dependencies]
 gleeunit = "~> 0.7"

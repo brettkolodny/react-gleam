@@ -16,10 +16,10 @@ const world = [
 pub fn greet(world world_init: String) {
   use <- component()
 
-  let #(world, set_world) = use_state(world_init)
+  let #(world, set_world) = use_state(fn(_) { world_init })
 
   use_effect0(fn() {
-    let timeout = set_interval(fn() { set_world(get_random_world()) }, 3000)
+    let timeout = set_interval(fn() { set_world(fn(_) { get_random_world() }) }, 3000)
 
     Some(fn() { clear_interval(timeout) })
   })
