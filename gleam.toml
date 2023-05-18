@@ -3,7 +3,7 @@ version = "0.5.0"
 
 licences = ["MIT"]
 description = "React bindings for Gleam"
-repository = { type = "github", user = "brettkolodny", repo = "https://github.com/brettkolodny/react-gleam"}
+repository = { type = "github", user = "brettkolodny", repo = "react-gleam"}
 
 target = "javascript"
 
