@@ -8,8 +8,8 @@ repository = { type = "github", user = "brettkolodny", repo = "react-gleam"}
 target = "javascript"
 
 [dependencies]
-gleam_stdlib = "~> 0.25"
-gleam_javascript = "~> 0.2"
+gleam_stdlib = "~> 0.28.2"
+gleam_javascript = "~> 0.4"
 
 [dev-dependencies]
 gleeunit = "~> 0.7"

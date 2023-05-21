@@ -79,7 +79,7 @@ pub fn on_keypress(
   on(
     "keyPress",
     fn(e, dispatch) {
-      assert Ok(key) =
+      let assert Ok(key) =
         e
         |> dynamic.field("key", dynamic.string)
 
@@ -94,7 +94,7 @@ pub fn on_keydown(
   on(
     "keyDown",
     fn(e, dispatch) {
-      assert Ok(key) =
+      let assert Ok(key) =
         e
         |> dynamic.field("key", dynamic.string)
 
@@ -109,7 +109,7 @@ pub fn on_keyup(
   on(
     "keyUp",
     fn(e, dispatch) {
-      assert Ok(key) =
+      let assert Ok(key) =
         e
         |> dynamic.field("key", dynamic.string)
 
@@ -127,7 +127,7 @@ pub fn on_input(
   on(
     "input",
     fn(e, dispatch) {
-      assert Ok(value) =
+      let assert Ok(value) =
         e
         |> dynamic.field("target", dynamic.field("value", dynamic.string))
 
@@ -142,7 +142,7 @@ pub fn on_check(
   on(
     "check",
     fn(e, dispatch) {
-      assert Ok(value) =
+      let assert Ok(value) =
         e
         |> dynamic.field("target", dynamic.field("checked", dynamic.bool))
 
