@@ -17,7 +17,10 @@ pub external fn use_state(initial: fn() -> a) -> #(a, fn(fn(a) -> a) -> Nil) =
 
 // REDUCER --------------------------------------------------------------------
 
-pub external fn use_reducer(reducer: fn(a, b) -> a, initial: a) -> #(a, fn(b) -> Nil) =
+pub external fn use_reducer(
+  reducer: fn(a, b) -> a,
+  initial: a,
+) -> #(a, fn(b) -> Nil) =
   "../ffi.mjs" "useReducer"
 
 // EFFECT ---------------------------------------------------------------------
@@ -28,7 +31,10 @@ pub external fn use_effect(callback: fn() -> Option(fn() -> Nil)) -> Nil =
 pub external fn use_effect0(callback: fn() -> Option(fn() -> Nil)) -> Nil =
   "../ffi.mjs" "useEffect0"
 
-pub external fn use_effect1(callback: fn() -> Option(fn() -> Nil), dependencies: #(g)) -> Nil =
+pub external fn use_effect1(
+  callback: fn() -> Option(fn() -> Nil),
+  dependencies: #(g),
+) -> Nil =
   "../ffi.mjs" "useEffectHook"
 
 pub external fn use_effect2(
@@ -78,33 +84,60 @@ pub external fn use_memo2(calculation: fn() -> v, dependencies: #(g, l)) -> g =
 pub external fn use_memo3(calculation: fn() -> v, dependencies: #(g, l, e)) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_memo4(calculation: fn() -> v, dependencies: #(g, l, e, a)) -> g =
+pub external fn use_memo4(
+  calculation: fn() -> v,
+  dependencies: #(g, l, e, a),
+) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_memo5(calculation: fn() -> v, dependencies: #(g, l, e, a, m)) -> g =
+pub external fn use_memo5(
+  calculation: fn() -> v,
+  dependencies: #(g, l, e, a, m),
+) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_memo6(calculation: fn() -> v, dependencies: #(g, l, e, a, m, o)) -> g =
+pub external fn use_memo6(
+  calculation: fn() -> v,
+  dependencies: #(g, l, e, a, m, o),
+) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_memo7(calculation: fn() -> v, dependencies: #(g, l, e, a, m, o, r)) -> g =
+pub external fn use_memo7(
+  calculation: fn() -> v,
+  dependencies: #(g, l, e, a, m, o, r),
+) -> g =
   "../ffi.mjs" "useMemo"
 
 // CALLBACK -------------------------------------------------------------------
 
-pub external fn use_callback1(callback: fn() -> fn() -> v, dependencies: #(g)) -> v =
+pub external fn use_callback1(
+  callback: fn() -> fn() -> v,
+  dependencies: #(g),
+) -> v =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_callback2(callback: fn() -> fn() -> v, dependencies: #(g, l)) -> g =
+pub external fn use_callback2(
+  callback: fn() -> fn() -> v,
+  dependencies: #(g, l),
+) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_callback3(callback: fn() -> fn() -> v, dependencies: #(g, l, e)) -> g =
+pub external fn use_callback3(
+  callback: fn() -> fn() -> v,
+  dependencies: #(g, l, e),
+) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_callback4(callback: fn() -> fn() -> v, dependencies: #(g, l, e, a)) -> g =
+pub external fn use_callback4(
+  callback: fn() -> fn() -> v,
+  dependencies: #(g, l, e, a),
+) -> g =
   "../ffi.mjs" "useMemo"
 
-pub external fn use_callback5(callback: fn() -> fn() -> v, dependencies: #(g, l, e, a, m)) -> g =
+pub external fn use_callback5(
+  callback: fn() -> fn() -> v,
+  dependencies: #(g, l, e, a, m),
+) -> g =
   "../ffi.mjs" "useMemo"
 
 pub external fn use_callback6(
