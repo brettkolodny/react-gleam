@@ -12,6 +12,9 @@ pub external type Element
 
 // CONSTRUCTORS ---------------------------------------------------------------
 
+pub external fn create_element(element: fn(a) -> Element, props: a) -> Element =
+  "../ffi.mjs" "component"
+
 pub external fn node(
   tag: String,
   attributes: List(Attribute(g, action)),

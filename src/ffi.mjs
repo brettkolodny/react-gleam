@@ -130,8 +130,8 @@ export const text = (content) => content;
  * @param {Element} element
  * @returns {Element}
  */
-export const component = (element) => {
-  return createElement(element);
+export const component = (element, props) => {
+  return createElement(element, { ...props });
 };
 
 // CONTEXT --------------------------------------------------------------------

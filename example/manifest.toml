@@ -5,10 +5,10 @@ packages = [
   { name = "gleam_javascript", version = "0.4.0", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_javascript", source = "hex", outer_checksum = "E0E8D33461776BFCC124838183F85E430D3A71D7318F210C9DE0CFB52E5AC8DE" },
   { name = "gleam_stdlib", version = "0.28.2", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "088E334A00C9530D4B194F31406E51B6E4E4697C6A380D11591E60CC2F239724" },
   { name = "gleeunit", version = "0.10.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "ECEA2DE4BE6528D36AFE74F42A21CDF99966EC36D7F25DEB34D47DD0F7977BAF" },
-  { name = "react_gleam", version = "0.5.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "gleam_javascript"], otp_app = "react_gleam", source = "hex", outer_checksum = "1D287619A0DE9FA3150CDE9DA7AA33916FF5BB73C51383DCDC809F48F6C6B1A8" },
+  { name = "react_gleam", version = "0.5.1", build_tools = ["gleam"], requirements = ["gleam_javascript", "gleam_stdlib"], otp_app = "react_gleam", source = "hex", outer_checksum = "3EC8F62FF32B8D2005AFAB48A817D9D65B45C2FB3602112373A29FFC2BED6611" },
 ]
 
 [requirements]
 gleam_stdlib = "~> 0.28.2"
 gleeunit = "~> 0.7"
-react_gleam = "~> 0.5"
+react_gleam = "~> 0.5.1"
