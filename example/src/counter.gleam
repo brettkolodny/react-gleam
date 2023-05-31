@@ -7,7 +7,7 @@ import react_gleam/hook.{use_state}
 pub fn counter(count init_count: Int) {
   use <- component()
 
-  let #(count, set_count) = use_state(fn(_) { init_count })
+  let #(count, set_count) = use_state(fn() { init_count })
 
   div(
     [],

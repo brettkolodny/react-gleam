@@ -12,7 +12,7 @@ pub type Ref(g) {
 
 // STATE ----------------------------------------------------------------------
 
-pub external fn use_state(initial: fn(a) -> a) -> #(a, fn(fn(a) -> a) -> Nil) =
+pub external fn use_state(initial: fn() -> a) -> #(a, fn(fn(a) -> a) -> Nil) =
   "../ffi.mjs" "useState"
 
 // REDUCER --------------------------------------------------------------------

@@ -16,7 +16,7 @@ const world = [
 pub fn greet(world world_init: String) {
   use <- component()
 
-  let #(world, set_world) = use_state(fn(_) { world_init })
+  let #(world, set_world) = use_state(fn() { world_init })
 
   use_effect0(fn() {
     let timeout =
