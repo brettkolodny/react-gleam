@@ -16,7 +16,7 @@ external type DOMEvent
 pub fn use_url() -> Location {
   let location = get_current_location()
 
-  let #(current_location, set_current_location) = use_state(fn() {location})
+  let #(current_location, set_current_location) = use_state(fn() { location })
 
   use_effect0(fn() {
     let location_change_callback = fn() {
