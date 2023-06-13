@@ -8,9 +8,12 @@ import react_gleam/attribute.{Attribute, attribute}
 import react_gleam.{Element}
 
 // CONSTRUCTORS ---------------------------------------------------------------
-pub external fn create(fc: fn (p) -> Element, props : p, children : List(Element)) -> Element =
+pub external fn create(
+  fc: fn(p) -> Element,
+  props: p,
+  children: List(Element),
+) -> Element =
   "../ffi.mjs" "create"
-
 
 pub external fn node(
   tag: String,

@@ -2,7 +2,6 @@ import react_gleam.{Element}
 // import react_gleam/attribute.{attribute}
 import react_gleam/hook
 import react_gleam/element
-
 import gleeunit/should
 import gleam/string
 
@@ -18,7 +17,7 @@ type PetState {
   Running
 }
 
-fn pet_profile(props : Pet) -> Element {
+fn pet_profile(props: Pet) -> Element {
   use state, _s <- hook.state(Sitting)
 
   element.div(

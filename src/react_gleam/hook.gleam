@@ -3,9 +3,8 @@
 import gleam/dynamic.{Dynamic}
 import gleam/option.{Option}
 import react_gleam/dom_element.{DomElement}
-import react_gleam.{Element, Context}
+import react_gleam.{Context, Element}
 import react_gleam/context
-
 
 // TYPES ----------------------------------------------------------------------
 
@@ -20,21 +19,20 @@ pub type Ref(g) {
 pub external fn use_state(initial: fn() -> a) -> #(a, fn(fn(a) -> a) -> Nil) =
   "../ffi.mjs" "useState"
 
-
 /// state api to be used in such syntax:
 /// `use foo, set_foo <- state(initial)`
 ///
 pub fn state(initial, body) -> Element {
-   let #(value, set_value) = use_state(fn () {initial})
-   body(value, set_value)
+  let #(value, set_value) = use_state(fn() { initial })
+  body(value, set_value)
 }
 
 /// state api to be used in such syntax, with lazy initialization value
 /// `use foo, set_foo <- state(fn () { initial })`
 /// the initializer function must by synchronous (not returning a Promise)
 pub fn state_lazy(initial_fun, body) -> Element {
-   let #(value, set_value) = use_state(initial_fun)
-   body(value, set_value)
+  let #(value, set_value) = use_state(initial_fun)
+  body(value, set_value)
 }
 
 // REDUCER --------------------------------------------------------------------
@@ -45,11 +43,7 @@ pub external fn use_reducer(
 ) -> #(a, fn(b) -> Nil) =
   "../ffi.mjs" "useReducer"
 
-pub fn reducer(
-  reducer,
-  initial,
-  body
-  ) -> Element {
+pub fn reducer(reducer, initial, body) -> Element {
   let #(value, set_value) = use_reducer(reducer, initial)
   body(value, set_value)
 }
@@ -104,7 +98,6 @@ pub external fn use_effect7(
 ) -> Nil =
   "../ffi.mjs" "useEffectHook"
 
-
 pub fn effect0(effect_fun, body) -> Element {
   use_effect0(effect_fun)
   body()
@@ -144,6 +137,7 @@ pub fn effect7(effect_fun, deps, body) -> Element {
   use_effect7(effect_fun, deps)
   body()
 }
+
 // MEMO -----------------------------------------------------------------------
 
 pub external fn use_memo1(calculation: fn() -> v, dependencies: #(g)) -> v =
@@ -250,10 +244,7 @@ pub external fn use_context(key: String) -> Result(Dynamic, String) =
   "../ffi.mjs" "useContextHook"
 
 /// use val <- context(val_context_getter)
-pub fn context(
-  getter: fn () -> Context(a),
-  render: fn (a) -> Element
-  ) {
+pub fn context(getter: fn() -> Context(a), render: fn(a) -> Element) {
   let ctx = getter()
   let value = context.use_context(ctx)
   render(value)
