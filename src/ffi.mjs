@@ -127,12 +127,17 @@ export const text = (content) => content;
 
 /**
  * A workaround for getting custom stateful components to work
+ * XXX broken (issue 13)
  * @param {Element} element
  * @returns {Element}
  */
 export const component = (element) => {
   return createElement(element);
 };
+
+export const create = (fc, props, children) => {
+  return createElement(fc, props, [...children]);
+}
 
 // CONTEXT --------------------------------------------------------------------
 
@@ -169,6 +174,11 @@ export const getContext = (key) => {
 };
 
 export { useContext };
+
+export const provideContext = (getter, value, render) => {
+  const ctx = getter();
+  return createElement(ctx.Provider, {value}, render());
+}
 
 // UTILITY --------------------------------------------------------------------
 
