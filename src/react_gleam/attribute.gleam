@@ -12,12 +12,16 @@ import gleam/string
 import react_gleam/hook.{Ref}
 
 // TYPES -----------------------------------------------------------------------
+// Is react event list finite? Seems so.
+// even for custom events there is a CustomEvent interface.
+pub type Event = Dynamic
 
-///
+/// XXX Perhaps easier to grasp generic type names: 
+/// g, action -> ref, event? 
 pub opaque type Attribute(g, action) {
   Attribute(name: String, value: String)
   Property(name: String, value: Dynamic)
-  Event(name: String, handler: fn(Dynamic, fn(action) -> Nil) -> Nil)
+  Event(name: String, handler: fn(Event) -> Nil)
   ReactRef(name: String, ref: Ref(g))
 }
 
@@ -36,7 +40,7 @@ pub fn property(name: String, value: Dynamic) -> Attribute(g, action) {
 ///
 pub fn event(
   name: String,
-  handler: fn(Dynamic, fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
   Event(name, handler)
 }

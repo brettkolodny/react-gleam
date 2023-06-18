@@ -4,15 +4,15 @@
 
 // IMPORTS ---------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
-import react_gleam/attribute.{Attribute}
+import gleam/dynamic
+import react_gleam/attribute.{Attribute, Event}
 
 // CONSTRUCTORS ----------------------------------------------------------------
 
 ///
 pub fn on(
   name: String,
-  handler: fn(Dynamic, fn(action) -> Nil) -> Nil,
+  handler: fn (Event) -> Nil,
 ) -> Attribute(g, action) {
   attribute.event(name, handler)
 }
@@ -25,142 +25,127 @@ pub fn dispatch(action: action) -> fn(fn(action) -> Nil) -> Nil {
 // MOUSE EVENTS ----------------------------------------------------------------
 
 ///
-pub fn on_click(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
-  on("click", fn(_, dispatch) { handler(dispatch) })
+pub fn on_click(handler: fn(Event) -> Nil) -> Attribute(g, action) {
+  on("click", handler)
 }
 
 ///
 pub fn on_mouse_down(
-  handler: fn(fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
-  on("mouseDown", fn(_, dispatch) { handler(dispatch) })
+  on("mouseDown", handler)
 }
 
 ///
 pub fn on_mouse_up(
-  handler: fn(fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
-  on("mouseUp", fn(_, dispatch) { handler(dispatch) })
+  on("mouseUp", handler)
 }
 
 ///
 pub fn on_mouse_enter(
-  handler: fn(fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
-  on("mouseEnter", fn(_, dispatch) { handler(dispatch) })
+  on("mouseEnter", handler)
 }
 
 ///
 pub fn on_mouse_leave(
-  handler: fn(fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
-  on("mouseLeave", fn(_, dispatch) { handler(dispatch) })
+  on("mouseLeave", handler)
 }
 
 ///
 pub fn on_mouse_over(
-  handler: fn(fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
-  on("mouseOver", fn(_, dispatch) { handler(dispatch) })
+  on("mouseOver", handler)
 }
 
 ///
 pub fn on_mouse_out(
-  handler: fn(fn(action) -> Nil) -> Nil,
+  handler: fn(Event) -> Nil,
 ) -> Attribute(g, action) {
-  on("mouseOut", fn(_, dispatch) { handler(dispatch) })
+  on("mouseOut", handler)
 }
 
 // KEYBOARD EVENTS -------------------------------------------------------------
 
 pub fn on_keypress(
-  handler: fn(String, fn(action) -> Nil) -> Nil,
+  handler: fn(String, Event) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "keyPress",
-    fn(e, dispatch) {
+  on("keyPress", fn(e) {
       let assert Ok(key) =
         e
         |> dynamic.field("key", dynamic.string)
 
-      handler(key, dispatch)
-    },
-  )
+      handler(key, e)
+    })
 }
 
 pub fn on_keydown(
-  handler: fn(String, fn(action) -> Nil) -> Nil,
+  handler: fn(String, Event) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "keyDown",
-    fn(e, dispatch) {
+  on("keyDown", fn(e) {
       let assert Ok(key) =
         e
         |> dynamic.field("key", dynamic.string)
 
-      handler(key, dispatch)
-    },
-  )
+      handler(key, e)
+    })
 }
 
 pub fn on_keyup(
-  handler: fn(String, fn(action) -> Nil) -> Nil,
+  handler: fn(String, Event) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "keyUp",
-    fn(e, dispatch) {
+  on("keyUp", fn(e) {
       let assert Ok(key) =
         e
         |> dynamic.field("key", dynamic.string)
 
-      handler(key, dispatch)
-    },
-  )
+      handler(key, e)
+    })
 }
 
 // FORM EVENTS -----------------------------------------------------------------
 
 ///
 pub fn on_input(
-  handler: fn(String, fn(action) -> Nil) -> Nil,
+  handler: fn(String, Event) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "input",
-    fn(e, dispatch) {
-      let assert Ok(value) =
+  on("input", fn(e) {
+      let assert Ok(key) =
         e
         |> dynamic.field("target", dynamic.field("value", dynamic.string))
 
-      handler(value, dispatch)
-    },
-  )
+      handler(key, e)
+    })
 }
 
 pub fn on_check(
-  handler: fn(Bool, fn(action) -> Nil) -> Nil,
+  handler: fn(Bool, Event) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "check",
-    fn(e, dispatch) {
-      let assert Ok(value) =
+  on("check", fn(e) {
+      let assert Ok(key) =
         e
         |> dynamic.field("target", dynamic.field("checked", dynamic.bool))
 
-      handler(value, dispatch)
-    },
-  )
+      handler(key, e)
+    })
 }
 
-pub fn on_submit(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
-  on("submit", fn(_, dispatch) { handler(dispatch) })
+pub fn on_submit(handler: fn(Event) -> Nil) -> Attribute(g, action) {
+  on("submit", handler)
 }
 
 // FOCUS EVENTS ----------------------------------------------------------------
 
-pub fn on_focus(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
-  on("focus", fn(_, dispatch) { handler(dispatch) })
+pub fn on_focus(handler: fn(Event) -> Nil) -> Attribute(g, action) {
+  on("focus", handler)
 }
 
-pub fn on_blur(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {
-  on("blur", fn(_, dispatch) { handler(dispatch) })
+pub fn on_blur(handler: fn(Event) -> Nil) -> Attribute(g, action) {
+  on("blur", handler)
 }
