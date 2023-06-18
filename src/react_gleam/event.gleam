@@ -5,7 +5,8 @@
 // IMPORTS ---------------------------------------------------------------------
 
 import gleam/dynamic
-import react_gleam/attribute.{Attribute, Event}
+import react_gleam.{Event}
+import react_gleam/attribute.{Attribute}
 
 // CONSTRUCTORS ----------------------------------------------------------------
 

@@ -4,6 +4,7 @@
 
 // IMPORTS --------------------------------------------------------------------
 
+import gleam/dynamic.{Dynamic}
 import react_gleam/attribute.{Attribute, attribute}
 import react_gleam.{Element}
 
@@ -23,7 +24,6 @@ pub external fn node(
   "../ffi.mjs" "node"
 
 /// Render a Gleam string as an HTML text node.
-///
 pub external fn text(content: String) -> Element =
   "../ffi.mjs" "text"
 

@@ -10,11 +10,11 @@ import gleam/list
 import gleam/pair
 import gleam/string
 import react_gleam/hook.{Ref}
+import react_gleam.{Event}
 
 // TYPES -----------------------------------------------------------------------
 // Is react event list finite? Seems so.
 // even for custom events there is a CustomEvent interface.
-pub type Event = Dynamic
 
 /// XXX Perhaps easier to grasp generic type names: 
 /// g, action -> ref, event? 

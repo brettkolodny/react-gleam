@@ -1,10 +1,13 @@
 // IMPORTS --------------------------------------------------------------------
+import gleam/dynamic.{Dynamic}
 
 // TYPES ----------------------------------------------------------------------
 
 pub external type Element
 
 pub external type Context(a)
+
+pub type Event = Dynamic
 
 // GENERAL --------------------------------------------------------------------
 
