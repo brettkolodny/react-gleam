@@ -2,15 +2,10 @@
 
 import gleam/dynamic.{Dynamic}
 import gleam/option.{Option}
-import react_gleam/dom_element.{DomElement}
-import react_gleam.{Context, Element}
+import react_gleam.{Context, DomElement, Element, Ref}
 import react_gleam/context
 
 // TYPES ----------------------------------------------------------------------
-
-pub type Ref(g) {
-  Ref(current: Option(g))
-}
 
 // STATE ----------------------------------------------------------------------
 

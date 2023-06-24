@@ -2,17 +2,13 @@
 
 import gleam/option.{Some}
 import react_gleam/hook.{use_effect0, use_state}
+import react_gleam.{Location}
 
-// TYPES ----------------------------------------------------------------------
-
-pub type Location {
-  Location(path: List(String), hash: String, search: String)
-}
+// TYPES
 
 external type DOMEvent
 
 // HOOKS ----------------------------------------------------------------------
-
 pub fn use_url() -> Location {
   let location = get_current_location()
 

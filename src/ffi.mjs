@@ -198,7 +198,7 @@ export const render = (app, selector) => {
 
 // HELPERS --------------------------------------------------------------------
 
-const toProps = (attributes) => {
+export const toProps = (attributes) => {
   const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
 
   return Object.fromEntries(

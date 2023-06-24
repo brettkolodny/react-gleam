@@ -9,8 +9,7 @@ import gleam/int
 import gleam/list
 import gleam/pair
 import gleam/string
-import react_gleam/hook.{Ref}
-import react_gleam.{Event}
+import react_gleam.{Event, Ref}
 
 // TYPES -----------------------------------------------------------------------
 // Is react event list finite? Seems so.
@@ -25,6 +24,9 @@ pub opaque type Attribute(g, action) {
   ReactRef(name: String, ref: Ref(g))
 }
 
+pub external fn to_props(List(Attribute(g, action))) -> Dynamic =
+  "../ffi.mjs" "toProps"
+
 // CONSTRUCTORS ----------------------------------------------------------------
 
 ///
@@ -38,10 +40,7 @@ pub fn property(name: String, value: Dynamic) -> Attribute(g, action) {
 }
 
 ///
-pub fn event(
-  name: String,
-  handler: fn(Event) -> Nil,
-) -> Attribute(g, action) {
+pub fn event(name: String, handler: fn(Event) -> Nil) -> Attribute(g, action) {
   Event(name, handler)
 }
 

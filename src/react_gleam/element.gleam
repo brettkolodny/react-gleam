@@ -4,7 +4,6 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
 import react_gleam/attribute.{Attribute, attribute}
 import react_gleam.{Element}
 

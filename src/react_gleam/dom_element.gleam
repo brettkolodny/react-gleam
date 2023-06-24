@@ -1,10 +1,7 @@
 // IMPORTS
 
 import gleam/option.{Option}
-
-// TYPES ----------------------------------------------------------------------
-
-pub external type DomElement
+import react_gleam.{DomElement}
 
 // FUNCTIONS ------------------------------------------------------------------
 

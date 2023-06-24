@@ -1,5 +1,6 @@
 // IMPORTS --------------------------------------------------------------------
 import gleam/dynamic.{Dynamic}
+import gleam/option.{Option}
 
 // TYPES ----------------------------------------------------------------------
 
@@ -7,7 +8,18 @@ pub external type Element
 
 pub external type Context(a)
 
-pub type Event = Dynamic
+pub type Event =
+  Dynamic
+
+pub type Ref(g) {
+  Ref(current: Option(g))
+}
+
+pub external type DomElement
+
+pub type Location {
+  Location(path: List(String), hash: String, search: String)
+}
 
 // GENERAL --------------------------------------------------------------------
 
