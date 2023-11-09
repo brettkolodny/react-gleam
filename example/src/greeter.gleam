@@ -28,16 +28,16 @@ pub fn greet(world world_init: String) {
   div([], [text("Hello " <> world <> "!")])
 }
 
-external type Timeout
+type Timeout
 
-external fn set_interval(fn() -> Nil, ms: Int) -> Timeout =
-  "" "setInterval"
+@external(javascript, "", "setInterval")
+fn set_interval(fn() -> Nil, ms: Int) -> Timeout
 
-external fn clear_interval(timeout: Timeout) -> Nil =
-  "" "clearInterval"
+@external(javascript, "", "clearInterval")
+fn clear_interval(timeout: Timeout) -> Nil
 
-external fn math_random() -> Float =
-  "" "Math.random"
+@external(javascript, "", "Math.random")
+fn math_random() -> Float
 
 fn get_random_world() -> String {
   let index =

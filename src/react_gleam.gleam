@@ -4,19 +4,19 @@ import react_gleam/element.{Element}
 
 // TYPES ----------------------------------------------------------------------
 
-pub external type Context
+pub type Context
 
 // GENERAL --------------------------------------------------------------------
 
-pub external fn render(app: Element, root: String) -> Nil =
-  "./ffi.mjs" "render"
+@external(javascript, "./ffi.mjs", "render")
+pub fn render(app: Element, root: String) -> Nil
 
 // CONTEXT --------------------------------------------------------------------
 
-pub external fn set_context(key: String, value: g) -> Nil =
-  "./ffi.mjs" "setContext"
+@external(javascript, "./ffi.mjs", "setContext")
+pub fn set_context(key: String, value: g) -> Nil
 
 // COMPONENT ------------------------------------------------------------------
 
-pub external fn component(element: fn() -> Element) -> Element =
-  "./ffi.mjs" "component"
+@external(javascript, "./ffi.mjs", "component")
+pub fn component(element: fn() -> Element) -> Element
