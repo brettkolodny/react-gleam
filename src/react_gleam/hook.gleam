@@ -1,8 +1,8 @@
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
-import gleam/option.{Option}
-import react_gleam/dom_element.{DomElement}
+import gleam/dynamic.{type Dynamic}
+import gleam/option.{type Option}
+import react_gleam/dom_element.{type DomElement}
 
 // TYPES ----------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import react_gleam/attribute.{Attribute, attribute}
+import react_gleam/attribute.{type Attribute, attribute}
 
 // TYPES ----------------------------------------------------------------------
 

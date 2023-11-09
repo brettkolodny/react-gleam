@@ -1,6 +1,6 @@
 // IMPORTS
 
-import gleam/option.{Option}
+import gleam/option.{type Option}
 
 // TYPES ----------------------------------------------------------------------
 

@@ -4,12 +4,12 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
+import gleam/dynamic.{type Dynamic}
 import gleam/int
 import gleam/list
 import gleam/pair
 import gleam/string
-import react_gleam/hook.{Ref}
+import react_gleam/hook.{type Ref}
 
 // TYPES -----------------------------------------------------------------------
 

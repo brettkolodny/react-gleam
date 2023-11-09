@@ -1,6 +1,6 @@
 // IMPORTS --------------------------------------------------------------------
 
-import react_gleam/element.{Element}
+import react_gleam/element.{type Element}
 
 // TYPES ----------------------------------------------------------------------
 
