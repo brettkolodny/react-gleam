@@ -48,8 +48,8 @@ pub fn style(properties: List(#(String, String))) -> Attribute(g, action) {
   property("style", style_object(properties))
 }
 
-external fn style_object(properties: List(#(String, String))) -> Dynamic =
-  "../ffi.mjs" "object"
+@external(javascript, "../ffi.mjs", "object")
+fn style_object(properties: List(#(String, String))) -> Dynamic
 
 ///
 pub fn class(name: String) -> Attribute(g, action) {
