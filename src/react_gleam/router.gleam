@@ -9,7 +9,7 @@ pub type Location {
   Location(path: List(String), hash: String, search: String)
 }
 
-external type DOMEvent
+type DOMEvent
 
 // HOOKS ----------------------------------------------------------------------
 
@@ -43,25 +43,25 @@ pub fn use_url() -> Location {
 
 // UTILITY --------------------------------------------------------------------
 
-pub external fn push(url: String) -> Nil =
-  "../ffi.mjs" "pushState"
+@external(javascript, "../ffi.mjs", "pushState")
+pub fn push(url: String) -> Nil
 
-pub external fn back() -> Nil =
-  "../ffi.mjs" "popState"
+@external(javascript, "../ffi.mjs", "popState")
+pub fn back() -> Nil
 
 // ----------------------------------------------------------------------------
 
-external fn get_current_location() -> Location =
-  "../ffi.mjs" "currentLocation"
+@external(javascript, "../ffi.mjs", "currentLocation")
+fn get_current_location() -> Location
 
-external fn add_event_listener(name: String, callback: fn() -> Nil) -> Nil =
-  "../ffi.mjs" "addEventListener"
+@external(javascript, "../ffi.mjs", "addEventListener")
+fn add_event_listener(name: String, callback: fn() -> Nil) -> Nil
 
-external fn remove_event_listener(name: String, callback: fn() -> Nil) -> Nil =
-  "../ffi.mjs" "removeEventListener"
+@external(javascript, "../ffi.mjs", "removeEventListener")
+fn remove_event_listener(name: String, callback: fn() -> Nil) -> Nil
 
-external fn dispatch_event(event: DOMEvent) -> Nil =
-  "../ffi.mjs" "dispatchEvent"
+@external(javascript, "../ffi.mjs", "dispatchEvent")
+fn dispatch_event(event: DOMEvent) -> Nil
 
-external fn new_event(name: String) -> DOMEvent =
-  "../ffi.mjs" "newEvent"
+@external(javascript, "../ffi.mjs", "newEvent")
+fn new_event(name: String) -> DOMEvent
