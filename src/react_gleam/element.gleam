@@ -5,12 +5,15 @@
 // IMPORTS --------------------------------------------------------------------
 
 import react_gleam/attribute.{type Attribute, attribute}
-
-// TYPES ----------------------------------------------------------------------
-
-pub type Element
+import react_gleam.{Element}
 
 // CONSTRUCTORS ---------------------------------------------------------------
+@external(javascript, "../ffi.mjs", "create")
+pub fn create(
+  fc: fn(p) -> Element,
+  props: p,
+  children: List(Element),
+) -> Element
 
 @external(javascript, "../ffi.mjs", "node")
 pub fn node(
