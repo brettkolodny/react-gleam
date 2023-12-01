@@ -1,4 +1,4 @@
-import react_gleam.{Context, Element}
+import react_gleam.{type Context, type Element}
 
 /// To have a typed context, Context(a), we need to have a "source of type" that is used both at
 /// context value providing and consumption.

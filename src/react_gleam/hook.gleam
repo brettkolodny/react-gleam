@@ -3,7 +3,7 @@
 import gleam/dynamic.{type Dynamic}
 import gleam/option.{type Option}
 import react_gleam/dom_element.{type DomElement}
-import react_gleam.{Context, Element}
+import react_gleam.{type Context, type Element}
 import react_gleam/context
 
 // TYPES ----------------------------------------------------------------------
