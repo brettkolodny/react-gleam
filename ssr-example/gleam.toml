@@ -13,7 +13,7 @@ gleam = ">= 0.32.0"
 # links = [{ title = "Website", href = "https://gleam.run" }]
 
 [dependencies]
-gleam_stdlib = "~> 0.31"
+gleam_stdlib = "~> 0.32"
 react_gleam = {path = "/Users/alex/Documents/projects/react_gleam"}
 
 

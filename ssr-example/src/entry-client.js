@@ -1,12 +1,11 @@
 //import './index.css'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-//import App from './App'
 
-import Counter from "./main.js";
+//import App from './main'
 
+import Counter from "./main";
 
-ReactDOM.hydrateRoot(
-  document.getElementById('root'),
-    <Counter />
-)
+import { hydrateIslands } from "./clientHydrate";
+
+console.log('hydrating...')
+hydrateIslands({ Counter })
+console.log('hydrated!')

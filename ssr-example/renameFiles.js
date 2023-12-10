@@ -1,19 +1,35 @@
 import { rename } from 'fs';
+import { join } from 'path';
+import {replaceExt} from './replaceExt.js';
+import {glob} from "glob";
 
 const callback = () => {};
 const main = () => {
 
-    const dir = "/Users/alex/Documents/projects/react_gleam/ssr-example/"
+    const project = process.cwd()
     const build = "build/dev/javascript/example"
-    const oldFileName = `${dir}${build}/entry-client.js`;
-    const oldFileName2 = `${dir}${build}/entry-server.js`;
-    const newFileName = `${dir}${build}/entry-client.jsx`;
-    const newFileName2 = `${dir}${build}/entry-server.jsx`;
+    const dir = `${project}/${build}`
+    const filesToGrab =  join(dir, 'entry-**.js')
+    const island =  join(dir, 'Island.js')
+    const hydrate =  join(dir, 'clientHydrate.js')
 
-    
-    rename(oldFileName, newFileName, callback);
+    const filesEntry = glob.sync(
+        filesToGrab
+    );
+    const second = glob.sync(
+        island
+    );
+    const third = glob.sync(
+        hydrate
+    );
 
-    rename(oldFileName2, newFileName2, callback);
+    const files = filesEntry.concat(second).concat(third)
+    console.log(files)
+    files.forEach((file) => {
+        const newName = replaceExt(file, '.jsx')
+        rename(file, newName, callback)
+    })
+
 
 }
 
