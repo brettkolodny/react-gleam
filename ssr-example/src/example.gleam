@@ -1,18 +1,18 @@
-//import react_gleam.{render}
-import react_gleam/element.{div, h1, h2, text}
-import counter.{counter}
+// import react_gleam/element.{div, h1, h2, text}
+// import counter.{type CountState, counter}
 
-pub fn main() {
-  app()
-}
+// pub fn main() {
+//   app()
+// }
 
-fn app() {
-  div(
-    [],
-    [
-      h1([], [text("Welcome to Gleam React!")]),
-      h2([], [text("A counter with use_state")]),
-      counter(6),
-    ],
-  )
-}
+// fn app() {
+//   let props = CountState(count: 6)
+//   div(
+//     [],
+//     [
+//       h1([], [text("Welcome to Gleam React!")]),
+//       h2([], [text("A counter with use_state")]),
+//       counter(props),
+//     ],
+//   )
+// }

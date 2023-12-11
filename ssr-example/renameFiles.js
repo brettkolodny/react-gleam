@@ -24,7 +24,6 @@ const main = () => {
     );
 
     const files = filesEntry.concat(second).concat(third)
-    console.log(files)
     files.forEach((file) => {
         const newName = replaceExt(file, '.jsx')
         rename(file, newName, callback)
