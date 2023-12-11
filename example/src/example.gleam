@@ -12,7 +12,7 @@ fn app() {
     [
       h1([], [text("Welcome to Gleam React!")]),
       h2([], [text("A counter with use_state")]),
-      counter(count: 6),
+      counter(6),
     ],
   )
 }

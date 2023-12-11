@@ -5,7 +5,7 @@
 // IMPORTS --------------------------------------------------------------------
 
 import react_gleam/attribute.{type Attribute, attribute}
-import react_gleam.{Element}
+import react_gleam.{type Element}
 
 // CONSTRUCTORS ---------------------------------------------------------------
 @external(javascript, "../ffi.mjs", "create")
