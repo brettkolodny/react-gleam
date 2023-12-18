@@ -4,12 +4,12 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
+import gleam/dynamic.{type Dynamic}
 import gleam/int
 import gleam/list
 import gleam/pair
 import gleam/string
-import react_gleam/hook.{Ref}
+import react_gleam/hook.{type Ref}
 
 // TYPES -----------------------------------------------------------------------
 
@@ -48,8 +48,8 @@ pub fn style(properties: List(#(String, String))) -> Attribute(g, action) {
   property("style", style_object(properties))
 }
 
-external fn style_object(properties: List(#(String, String))) -> Dynamic =
-  "../ffi.mjs" "object"
+@external(javascript, "../ffi.mjs", "object")
+fn style_object(properties: List(#(String, String))) -> Dynamic
 
 ///
 pub fn class(name: String) -> Attribute(g, action) {

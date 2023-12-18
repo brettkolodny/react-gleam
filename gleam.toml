@@ -6,10 +6,11 @@ description = "React bindings for Gleam"
 repository = { type = "github", user = "brettkolodny", repo = "react-gleam"}
 
 target = "javascript"
+gleam = ">= 0.32.0"
 
 [dependencies]
-gleam_stdlib = "~> 0.28.2"
-gleam_javascript = "~> 0.4"
+gleam_stdlib = "~> 0.31"
+gleam_javascript = "~> 0.7"
 
 [dev-dependencies]
 gleeunit = "~> 0.7"

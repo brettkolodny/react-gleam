@@ -1,22 +1,15 @@
 // IMPORTS
 
-import gleam/option.{Option}
+import gleam/option.{type Option}
 
 // TYPES ----------------------------------------------------------------------
 
-pub external type DomElement
+pub type DomElement
 
 // FUNCTIONS ------------------------------------------------------------------
 
-pub external fn set_attribute(
-  element: DomElement,
-  name: String,
-  value: String,
-) -> Nil =
-  "../ffi.mjs" "setAttribute"
+@external(javascript, "../ffi.mjs", "setAttribute")
+pub fn set_attribute(element: DomElement, name: String, value: String) -> Nil
 
-pub external fn get_attribute(
-  element: DomElement,
-  name: String,
-) -> Option(String) =
-  "../ffi.mjs" "getAttribute"
+@external(javascript, "../ffi.mjs", "getAttribute")
+pub fn get_attribute(element: DomElement, name: String) -> Option(String)

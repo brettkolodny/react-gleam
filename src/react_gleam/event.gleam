@@ -4,8 +4,8 @@
 
 // IMPORTS ---------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
-import react_gleam/attribute.{Attribute}
+import gleam/dynamic.{type Dynamic}
+import react_gleam/attribute.{type Attribute}
 
 // CONSTRUCTORS ----------------------------------------------------------------
 

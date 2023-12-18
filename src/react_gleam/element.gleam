@@ -4,25 +4,28 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import react_gleam/attribute.{Attribute, attribute}
-
-// TYPES ----------------------------------------------------------------------
-
-pub external type Element
+import react_gleam/attribute.{type Attribute, attribute}
+import react_gleam.{type Element}
 
 // CONSTRUCTORS ---------------------------------------------------------------
+@external(javascript, "../ffi.mjs", "create")
+pub fn create(
+  fc: fn(p) -> Element,
+  props: p,
+  children: List(Element),
+) -> Element
 
-pub external fn node(
+@external(javascript, "../ffi.mjs", "node")
+pub fn node(
   tag: String,
   attributes: List(Attribute(g, action)),
   children: List(Element),
-) -> Element =
-  "../ffi.mjs" "node"
+) -> Element
 
 /// Render a Gleam string as an HTML text node.
 ///
-pub external fn text(content: String) -> Element =
-  "../ffi.mjs" "text"
+@external(javascript, "../ffi.mjs", "text")
+pub fn text(content: String) -> Element
 
 // CONSTRUCTING NODES ---------------------------------------------------------
 // This list and grouping of nodes has been taken from the MDN reference at:
