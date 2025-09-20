@@ -1,8 +1,8 @@
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
-import gleam/option.{Option}
-import react_gleam/dom_element.{DomElement}
+import gleam/dynamic.{type Dynamic}
+import gleam/option.{type Option}
+import react_gleam/dom_element.{type DomElement}
 
 // TYPES ----------------------------------------------------------------------
 
@@ -12,167 +12,167 @@ pub type Ref(g) {
 
 // STATE ----------------------------------------------------------------------
 
-pub external fn use_state(initial: fn() -> a) -> #(a, fn(fn(a) -> a) -> Nil) =
-  "../ffi.mjs" "useState"
+@external(javascript, "../ffi.mjs", "useState")
+pub fn use_state(initial: fn() -> a) -> #(a, fn(fn(a) -> a) -> Nil)
 
 // REDUCER --------------------------------------------------------------------
 
-pub external fn use_reducer(
+@external(javascript, "../ffi.mjs", "useReducer")
+pub fn use_reducer(
   reducer: fn(a, b) -> a,
   initial: a,
-) -> #(a, fn(b) -> Nil) =
-  "../ffi.mjs" "useReducer"
+) -> #(a, fn(b) -> Nil)
 
 // EFFECT ---------------------------------------------------------------------
 
-pub external fn use_effect(callback: fn() -> Option(fn() -> Nil)) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect(callback: fn() -> Option(fn() -> Nil)) -> Nil
 
-pub external fn use_effect0(callback: fn() -> Option(fn() -> Nil)) -> Nil =
-  "../ffi.mjs" "useEffect0"
+@external(javascript, "../ffi.mjs", "useEffect0")
+pub fn use_effect0(callback: fn() -> Option(fn() -> Nil)) -> Nil
 
-pub external fn use_effect1(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect1(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
-pub external fn use_effect2(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect2(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g, l),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
-pub external fn use_effect3(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect3(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g, l, e),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
-pub external fn use_effect4(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect4(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g, l, e, a),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
-pub external fn use_effect5(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect5(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g, l, e, a, m),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
-pub external fn use_effect6(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect6(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g, l, e, a, m, o),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
-pub external fn use_effect7(
+@external(javascript, "../ffi.mjs", "useEffectHook")
+pub fn use_effect7(
   callback: fn() -> Option(fn() -> Nil),
   dependencies: #(g, l, e, a, m, o, r),
-) -> Nil =
-  "../ffi.mjs" "useEffectHook"
+) -> Nil
 
 // MEMO -----------------------------------------------------------------------
 
-pub external fn use_memo1(calculation: fn() -> v, dependencies: #(g)) -> v =
-  "../ffi.mjs" "useMemo"
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo1(calculation: fn() -> v, dependencies: #(g)) -> v
 
-pub external fn use_memo2(calculation: fn() -> v, dependencies: #(g, l)) -> g =
-  "../ffi.mjs" "useMemo"
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo2(calculation: fn() -> v, dependencies: #(g, l)) -> g
 
-pub external fn use_memo3(calculation: fn() -> v, dependencies: #(g, l, e)) -> g =
-  "../ffi.mjs" "useMemo"
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo3(calculation: fn() -> v, dependencies: #(g, l, e)) -> g
 
-pub external fn use_memo4(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo4(
   calculation: fn() -> v,
   dependencies: #(g, l, e, a),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_memo5(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo5(
   calculation: fn() -> v,
   dependencies: #(g, l, e, a, m),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_memo6(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo6(
   calculation: fn() -> v,
   dependencies: #(g, l, e, a, m, o),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_memo7(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_memo7(
   calculation: fn() -> v,
   dependencies: #(g, l, e, a, m, o, r),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
 // CALLBACK -------------------------------------------------------------------
 
-pub external fn use_callback1(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback1(
   callback: fn() -> fn() -> v,
   dependencies: #(g),
-) -> v =
-  "../ffi.mjs" "useMemo"
+) -> v
 
-pub external fn use_callback2(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback2(
   callback: fn() -> fn() -> v,
   dependencies: #(g, l),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_callback3(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback3(
   callback: fn() -> fn() -> v,
   dependencies: #(g, l, e),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_callback4(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback4(
   callback: fn() -> fn() -> v,
   dependencies: #(g, l, e, a),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_callback5(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback5(
   callback: fn() -> fn() -> v,
   dependencies: #(g, l, e, a, m),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_callback6(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback6(
   callback: fn() -> fn() -> v,
   dependencies: #(g, l, e, a, m, o),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
-pub external fn use_callback7(
+@external(javascript, "../ffi.mjs", "useMemo")
+pub fn use_callback7(
   callback: fn() -> fn() -> v,
   dependencies: #(g, l, e, a, m, o, r),
-) -> g =
-  "../ffi.mjs" "useMemo"
+) -> g
 
 // ID -------------------------------------------------------------------------
 
-pub external fn use_id() -> String =
-  "../ffi.mjs" "useId"
+@external(javascript, "../ffi.mjs", "useId")
+pub fn use_id() -> String
 
 // TRANSITION -----------------------------------------------------------------
 
-pub external fn use_transition(cb: fn() -> Nil) -> #(Bool, fn() -> Nil) =
-  "../ffi.mjs" "useTransition"
+@external(javascript, "../ffi.mjs", "useTransition")
+pub fn use_transition(cb: fn() -> Nil) -> #(Bool, fn() -> Nil)
 
 // DEBUG VALUE ----------------------------------------------------------------
 
-pub external fn use_debug_value(value: String) -> Nil =
-  "../ffi.mjs" "useDebugValue"
+@external(javascript, "../ffi.mjs", "useDebugValue")
+pub fn use_debug_value(value: String) -> Nil
 
 // REF ------------------------------------------------------------------------
 
-pub external fn use_ref(value: Option(DomElement)) -> Ref(DomElement) =
-  "../ffi.mjs" "useRefHook"
+@external(javascript, "../ffi.mjs", "useRefHook")
+pub fn use_ref(value: Option(DomElement)) -> Ref(DomElement)
 
 // CONTEXT --------------------------------------------------------------------
 
-pub external fn use_context(key: String) -> Result(Dynamic, String) =
-  "../ffi.mjs" "useContextHook"
+@external(javascript, "../ffi.mjs", "useContextHook")
+pub fn use_context(key: String) -> Result(Dynamic, String)

@@ -4,12 +4,12 @@
 
 // IMPORTS --------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
+import gleam/dynamic.{type Dynamic}
 import gleam/int
 import gleam/list
 import gleam/pair
 import gleam/string
-import react_gleam/hook.{Ref}
+import react_gleam/hook.{type Ref}
 
 // TYPES -----------------------------------------------------------------------
 
@@ -48,8 +48,11 @@ pub fn style(properties: List(#(String, String))) -> Attribute(g, action) {
   property("style", style_object(properties))
 }
 
-external fn style_object(properties: List(#(String, String))) -> Dynamic =
-  "../ffi.mjs" "object"
+@external(javascript, "../ffi.mjs", "object")
+fn style_object(properties: List(#(String, String))) -> Dynamic
+
+@external(javascript, "../ffi.mjs", "identity")
+fn bool_to_dynamic(value: Bool) -> Dynamic
 
 ///
 pub fn class(name: String) -> Attribute(g, action) {
@@ -86,7 +89,7 @@ pub fn value(val: Dynamic) -> Attribute(g, action) {
 
 ///
 pub fn checked(is_checked: Bool) -> Attribute(g, action) {
-  property("checked", dynamic.from(is_checked))
+  property("checked", bool_to_dynamic(is_checked))
 }
 
 ///
@@ -96,7 +99,7 @@ pub fn placeholder(text: String) -> Attribute(g, action) {
 
 ///
 pub fn selected(is_selected: Bool) -> Attribute(g, action) {
-  property("selected", dynamic.from(is_selected))
+  property("selected", bool_to_dynamic(is_selected))
 }
 
 // INPUT HELPERS ---------------------------------------------------------------
@@ -118,17 +121,17 @@ pub fn action(uri: String) -> Attribute(g, action) {
 
 ///
 pub fn autocomplete(should_autocomplete: Bool) -> Attribute(g, action) {
-  property("autocomplete", dynamic.from(should_autocomplete))
+  property("autocomplete", bool_to_dynamic(should_autocomplete))
 }
 
 ///
 pub fn autofocus(should_autofocus: Bool) -> Attribute(g, action) {
-  property("autoFocus", dynamic.from(should_autofocus))
+  property("autoFocus", bool_to_dynamic(should_autofocus))
 }
 
 ///
 pub fn disabled(is_disabled: Bool) -> Attribute(g, action) {
-  property("disabled", dynamic.from(is_disabled))
+  property("disabled", bool_to_dynamic(is_disabled))
 }
 
 ///
@@ -143,12 +146,12 @@ pub fn pattern(regex: String) -> Attribute(g, action) {
 
 ///
 pub fn readonly(is_readonly: Bool) -> Attribute(g, action) {
-  property("readonly", dynamic.from(is_readonly))
+  property("readonly", bool_to_dynamic(is_readonly))
 }
 
 ///
 pub fn required(is_required: Bool) -> Attribute(g, action) {
-  property("required", dynamic.from(is_required))
+  property("required", bool_to_dynamic(is_required))
 }
 
 ///
@@ -238,17 +241,17 @@ pub fn alt(text: String) -> Attribute(g, action) {
 
 ///
 pub fn autoplay(should_autoplay: Bool) -> Attribute(g, action) {
-  property("autoplay", dynamic.from(should_autoplay))
+  property("autoplay", bool_to_dynamic(should_autoplay))
 }
 
 ///
 pub fn controls(visible: Bool) -> Attribute(g, action) {
-  property("controls", dynamic.from(visible))
+  property("controls", bool_to_dynamic(visible))
 }
 
 ///
 pub fn loop(should_loop: Bool) -> Attribute(g, action) {
-  property("loop", dynamic.from(should_loop))
+  property("loop", bool_to_dynamic(should_loop))
 }
 
 // REACT ----------------------------------------------------------------------
