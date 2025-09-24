@@ -4,8 +4,19 @@
 
 // IMPORTS ---------------------------------------------------------------------
 
-import gleam/dynamic.{Dynamic}
-import react_gleam/attribute.{Attribute}
+import gleam/dynamic.{type Dynamic}
+import react_gleam/attribute.{type Attribute}
+
+// EXTERNAL FUNCTIONS ---------------------------------------------------------
+
+@external(javascript, "../ffi.mjs", "getEventKey")
+fn get_event_key(event: Dynamic) -> String
+
+@external(javascript, "../ffi.mjs", "getInputValue")
+fn get_input_value(event: Dynamic) -> String
+
+@external(javascript, "../ffi.mjs", "getCheckboxChecked")
+fn get_checkbox_checked(event: Dynamic) -> Bool
 
 // CONSTRUCTORS ----------------------------------------------------------------
 
@@ -79,10 +90,7 @@ pub fn on_keypress(
   on(
     "keyPress",
     fn(e, dispatch) {
-      let assert Ok(key) =
-        e
-        |> dynamic.field("key", dynamic.string)
-
+      let key = get_event_key(e)
       handler(key, dispatch)
     },
   )
@@ -94,10 +102,7 @@ pub fn on_keydown(
   on(
     "keyDown",
     fn(e, dispatch) {
-      let assert Ok(key) =
-        e
-        |> dynamic.field("key", dynamic.string)
-
+      let key = get_event_key(e)
       handler(key, dispatch)
     },
   )
@@ -109,10 +114,7 @@ pub fn on_keyup(
   on(
     "keyUp",
     fn(e, dispatch) {
-      let assert Ok(key) =
-        e
-        |> dynamic.field("key", dynamic.string)
-
+      let key = get_event_key(e)
       handler(key, dispatch)
     },
   )
@@ -127,10 +129,7 @@ pub fn on_input(
   on(
     "input",
     fn(e, dispatch) {
-      let assert Ok(value) =
-        e
-        |> dynamic.field("target", dynamic.field("value", dynamic.string))
-
+      let value = get_input_value(e)
       handler(value, dispatch)
     },
   )
@@ -142,10 +141,7 @@ pub fn on_check(
   on(
     "check",
     fn(e, dispatch) {
-      let assert Ok(value) =
-        e
-        |> dynamic.field("target", dynamic.field("checked", dynamic.bool))
-
+      let value = get_checkbox_checked(e)
       handler(value, dispatch)
     },
   )

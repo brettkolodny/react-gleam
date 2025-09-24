@@ -210,6 +210,14 @@ const toProps = (attributes) => {
 
 export const object = (entries) => Object.fromEntries(entries);
 
+// Identity function for converting values to dynamic
+export const identity = (value) => value;
+
+// Event helper functions
+export const getEventKey = (event) => event.key || "";
+export const getInputValue = (event) => event.target?.value || "";
+export const getCheckboxChecked = (event) => event.target?.checked || false;
+
 // DOM ELEMENTS ---------------------------------------------------------------
 
 /**
