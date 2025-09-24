@@ -11,12 +11,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.0
-      - uses: erlef/setup-beam@v1.14.0
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
         with:
-          otp-version: "25.1"
-          gleam-version: "0.28.2"
-          # elixir-version: "1.14.1"
-      - run: gleam format --check src test
+          otp-version: "27.2.1"
+          gleam-version: "1.11.1"
+          rebar3-version: "3"
+          # elixir-version: "1.15.4"
       - run: gleam deps download
       - run: gleam test
+      - run: gleam format --check src test
