@@ -1,16 +1,15 @@
-import gleam/option.{Some}
-import gleam/list
-import gleam/int
 import gleam/float
+import gleam/int
+import gleam/list
+import gleam/option.{Some}
 import react_gleam.{component}
 import react_gleam/element.{div, text}
 import react_gleam/hook.{use_effect0, use_state}
 
 const world = [
-  "world", "wêreld", "botë", "ዓለም", "العالمية", "աշխարհ",
-  "dünya", "mundua", "свет", "বিশ্ব", "世界", "mondu", "svijet",
-  "svět", "verden", "wereld-", "mondo", "maailmas", "maailman-", "monde",
-  "wrâld", "mundo", "სამყარო", "Welt",
+  "world", "wêreld", "botë", "ዓለም", "العالمية", "աշխարհ", "dünya", "mundua",
+  "свет", "বিশ্ব", "世界", "mondu", "svijet", "svět", "verden", "wereld-", "mondo",
+  "maailmas", "maailman-", "monde", "wrâld", "mundo", "სამყარო", "Welt",
 ]
 
 pub fn greet(world world_init: String) {
@@ -31,7 +30,7 @@ pub fn greet(world world_init: String) {
 type Timeout
 
 @external(javascript, "", "setInterval")
-fn set_interval(fn() -> Nil, ms: Int) -> Timeout
+fn set_interval(callback: fn() -> Nil, ms: Int) -> Timeout
 
 @external(javascript, "", "clearInterval")
 fn clear_interval(timeout: Timeout) -> Nil

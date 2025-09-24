@@ -1,8 +1,8 @@
 import gleam/int
 import react_gleam.{component}
 import react_gleam/element.{div, text}
-import react_gleam/hook.{use_reducer}
 import react_gleam/event.{on_click}
+import react_gleam/hook.{use_reducer}
 
 type Action {
   Inc
@@ -27,12 +27,9 @@ pub fn reducer_counter() {
 
   let #(Count(count), dispatch) = use_reducer(reducer, Count(0))
 
-  div(
-    [],
-    [
-      div([on_click(fn(_) { dispatch(Dec) })], [text("-")]),
-      div([], [text(int.to_string(count))]),
-      div([on_click(fn(_) { dispatch(Inc) })], [text("+")]),
-    ],
-  )
+  div([], [
+    div([on_click(fn(_) { dispatch(Dec) })], [text("-")]),
+    div([], [text(int.to_string(count))]),
+    div([on_click(fn(_) { dispatch(Inc) })], [text("+")]),
+  ])
 }

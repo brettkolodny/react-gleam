@@ -64,9 +64,9 @@ pub fn classes(names: List(#(String, Bool))) -> Attribute(g, action) {
   attribute(
     "className",
     names
-    |> list.filter(pair.second)
-    |> list.map(pair.first)
-    |> string.join(" "),
+      |> list.filter(pair.second)
+      |> list.map(pair.first)
+      |> string.join(" "),
   )
 }
 
