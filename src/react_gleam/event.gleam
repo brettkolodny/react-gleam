@@ -87,37 +87,28 @@ pub fn on_mouse_out(
 pub fn on_keypress(
   handler: fn(String, fn(action) -> Nil) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "keyPress",
-    fn(e, dispatch) {
-      let key = get_event_key(e)
-      handler(key, dispatch)
-    },
-  )
+  on("keyPress", fn(e, dispatch) {
+    let key = get_event_key(e)
+    handler(key, dispatch)
+  })
 }
 
 pub fn on_keydown(
   handler: fn(String, fn(action) -> Nil) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "keyDown",
-    fn(e, dispatch) {
-      let key = get_event_key(e)
-      handler(key, dispatch)
-    },
-  )
+  on("keyDown", fn(e, dispatch) {
+    let key = get_event_key(e)
+    handler(key, dispatch)
+  })
 }
 
 pub fn on_keyup(
   handler: fn(String, fn(action) -> Nil) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "keyUp",
-    fn(e, dispatch) {
-      let key = get_event_key(e)
-      handler(key, dispatch)
-    },
-  )
+  on("keyUp", fn(e, dispatch) {
+    let key = get_event_key(e)
+    handler(key, dispatch)
+  })
 }
 
 // FORM EVENTS -----------------------------------------------------------------
@@ -126,25 +117,19 @@ pub fn on_keyup(
 pub fn on_input(
   handler: fn(String, fn(action) -> Nil) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "input",
-    fn(e, dispatch) {
-      let value = get_input_value(e)
-      handler(value, dispatch)
-    },
-  )
+  on("input", fn(e, dispatch) {
+    let value = get_input_value(e)
+    handler(value, dispatch)
+  })
 }
 
 pub fn on_check(
   handler: fn(Bool, fn(action) -> Nil) -> Nil,
 ) -> Attribute(g, action) {
-  on(
-    "check",
-    fn(e, dispatch) {
-      let value = get_checkbox_checked(e)
-      handler(value, dispatch)
-    },
-  )
+  on("check", fn(e, dispatch) {
+    let value = get_checkbox_checked(e)
+    handler(value, dispatch)
+  })
 }
 
 pub fn on_submit(handler: fn(fn(action) -> Nil) -> Nil) -> Attribute(g, action) {

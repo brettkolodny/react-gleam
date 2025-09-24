@@ -9,12 +9,9 @@ pub fn counter(count init_count: Int) {
 
   let #(count, set_count) = use_state(fn() { init_count })
 
-  div(
-    [],
-    [
-      div([on_click(fn(_) { set_count(fn(prev) { prev + 1 }) })], [text("+")]),
-      div([], [text(int.to_string(count))]),
-      div([on_click(fn(_) { set_count(fn(prev) { prev - 1 }) })], [text("-")]),
-    ],
-  )
+  div([], [
+    div([on_click(fn(_) { set_count(fn(prev) { prev + 1 }) })], [text("+")]),
+    div([], [text(int.to_string(count))]),
+    div([on_click(fn(_) { set_count(fn(prev) { prev - 1 }) })], [text("-")]),
+  ])
 }
